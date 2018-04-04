@@ -4,6 +4,7 @@ import {fetchTodos} from "./Services/APIServices";
 import {createTodo} from "./Services/APIServices";
 import {ChangeCompleted} from "./Services/APIServices";
 import {DeleteTodo} from "./Services/APIServices";
+import NavBar from "./NavBar";
 
 class Todo extends Component {
 
@@ -114,6 +115,7 @@ class Container extends Component {
     render(){
         return(
             <div id="container" className="container">
+                <NavBar/>
                 <Header text={this.state.text} handleClick={this.handleClick} handleInput={this.handleInput} onClickBtn={this.handleClick.bind(this)}/>
                 <TodosList todos={this.state.todos} handleDelete={this.handleDelete} handleSetState={this.handleSetState}/>
             </div>
