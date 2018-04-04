@@ -115,7 +115,7 @@ class Container extends Component {
     render(){
         return(
             <div id="container" className="container">
-                <NavBar/>
+                <NavBar Home={true}/>
                 <Header text={this.state.text} handleClick={this.handleClick} handleInput={this.handleInput} onClickBtn={this.handleClick.bind(this)}/>
                 <TodosList todos={this.state.todos} handleDelete={this.handleDelete} handleSetState={this.handleSetState}/>
             </div>
