@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TodosApp from './Components/TodosApp.js';
+import TodosApp from './TodosApp.js';
 
 class Home extends Component {
 

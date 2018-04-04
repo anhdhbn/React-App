@@ -8,9 +8,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
     render(){
-        return(
-            
-           
+        return(        
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route exact path="/login" component={Login}/>

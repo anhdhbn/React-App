@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../style.css';
+import './style.css';
 import {fetchTodos} from "./Services/APIServices";
 import {createTodo} from "./Services/APIServices";
 import {ChangeCompleted} from "./Services/APIServices";
