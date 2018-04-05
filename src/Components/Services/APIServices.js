@@ -58,3 +58,40 @@ export const DeleteTodo = (text, completed) => {
         return respond.json();
     });
 }
+
+
+export const PostRegister = (name, user, email, psw) => {
+    const url = "https://honganh.azurewebsites.net/api/uetcodecamp/";
+    const request = new Request(url, {
+        method: 'Post',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: name,
+            user: user,
+            email: email,
+            psw: psw
+        })
+    });
+    return fetch(request).then(respond => {
+        return respond.json();
+    });
+}
+
+export const PostLogin = (user, psw) => {
+    const url = "https://honganh.azurewebsites.net/api/uetcodecamp/";
+    const request = new Request(url, {
+        method: 'Post',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            user: user,
+            psw: psw
+        })
+    });
+    return fetch(request).then(respond => {
+        return respond.json();
+    });
+}

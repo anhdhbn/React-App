@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Home from "./Home.js";
 import Login from "./Login.js";
 import Register from "./Register.js";
-import NavBar from "./NavBar.js";
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 
 class App extends Component {

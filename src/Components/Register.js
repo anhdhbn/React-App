@@ -1,34 +1,54 @@
 import React, { Component } from 'react';
 import NavBar from "./NavBar";
+import {Redirect} from "react-router-dom";
+import {PostRegister} from "./Services/APIServices";
 
 class Register extends Component {
+    state = {
+        name: "",
+        user: "",
+        email: "",
+        psw: "",
+        psw2: "",
+        success: false
+    }
     render() {
+        const {success} = this.state;
+        if (success) {
+            return <Redirect to="/login" />
+        }
         return (
             <div className="container conReg">
-                <NavBar Register={true}/>
+                <NavBar Register={true} />
                 <h1>Sign Up</h1>
                 <p>Please fill in this form to create an account.</p>
                 <hr />
 
-                <label for="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required />
+                <label htmlFor="name"><b>Full Name</b></label>
+                <input type="text" placeholder="Enter Your Name" name="name" required onChange={this.ChangeName} />
 
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required />
+                <label htmlFor="user"><b>User Name</b></label>
+                <input type="text" placeholder="Enter User Name" name="user" required onChange={this.ChangeUser} />
 
-                <label for="psw-repeat"><b>Repeat Password</b></label>
-                <input type="password" placeholder="Repeat Password" name="psw-repeat" required />
+                <label htmlFor="email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" required onChange={this.ChangeEmail} />
+
+                <label htmlFor="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required onChange={this.ChangePsw} />
+
+                <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="psw-repeat" required onChange={this.ChangePsw2} />
 
                 <label>
-                    <input type="checkbox" checked="checked" name="remember" style={{marginBottom: 15 + 'px'}} /> 
+                    <input type="checkbox" defaultChecked="checked" name="remember" style={{ marginBottom: 15 + 'px' }} />
                     Remember me
                 </label>
 
-                <p>By creating an account you agree to our <a href="#" style={{color: 'dodgerblue'}}>Terms & Privacy</a>.</p>
+                <p>By creating an account you agree to our <a href="" style={{ color: 'dodgerblue' }}>Terms & Privacy</a>.</p>
 
                 <div className="clearfix">
                     <button type="button" className="cancelbtn">Cancel</button>
-                    <button type="submit" className="signupbtn">Sign Up</button>
+                    <button type="submit" className="signupbtn" onClick={this.SubmitAccount}>Sign Up</button>
                 </div>
             </div>
         );
@@ -36,6 +56,37 @@ class Register extends Component {
 
     componentDidMount() {
 
+    }
+
+    ChangeName = (event) => {
+        this.setState({name: event.target.value});
+    }
+
+    ChangeUser = (event) => {
+        this.setState({user: event.target.value});
+    }
+
+    ChangeEmail = (event) => {
+        this.setState({email: event.target.value});
+    }
+
+    ChangePsw = (event) => {
+        this.setState({psw: event.target.value});
+    }
+
+    ChangePsw2 = (event) => {
+        this.setState({psw2: event.target.value});
+    }
+
+    SubmitAccount = () => {
+        console.log("submit");
+        if(this.state.psw === this.state.psw2)
+        {
+            PostRegister(this.state.name, this.state.user, this.state.email, this.state.psw).then(object => {
+                const {success} = object;
+                this.setState({success: success});
+            });
+        }
     }
 }
 
