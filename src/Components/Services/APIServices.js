@@ -1,5 +1,5 @@
 export const fetchTodos = () => {
-    var url = "https://honganh.azurewebsites.net/api/uetcodecamp/";
+    var url = "https://honganh.azurewebsites.net/api/codecamp/todos";
     
     //var url = "https://uetcc-todo-app.herokuapp.com/draft";
     return fetch(url)
@@ -9,7 +9,7 @@ export const fetchTodos = () => {
 };
 
 export const createTodo = (text) => {
-    const url = "https://honganh.azurewebsites.net/api/uetcodecamp/";
+    const url = "https://honganh.azurewebsites.net/api/codecamp/todos";
     const request = new Request(url, {
         method: 'Post',
         headers: {
@@ -25,7 +25,7 @@ export const createTodo = (text) => {
 }
 
 export const ChangeCompleted = (key, text, completed) => {
-    const url = "https://honganh.azurewebsites.net/api/uetcodecamp/";
+    const url = "https://honganh.azurewebsites.net/api/codecamp/todos";
     const request = new Request(url, {
         method: 'Put',
         headers: {
@@ -42,16 +42,15 @@ export const ChangeCompleted = (key, text, completed) => {
     });
 }
 
-export const DeleteTodo = (text, completed) => {
-    const url = "https://honganh.azurewebsites.net/api/uetcodecamp/";
+export const DeleteTodo = (key) => {
+    const url = "https://honganh.azurewebsites.net/api/codecamp/todos";
     const request = new Request(url, {
         method: 'Delete',
         headers: {
             'content-type': 'application/json'
         },
         body: JSON.stringify({
-            text: text,
-            completed: completed
+            id: key
         })
     });
     return fetch(request).then(respond => {
@@ -61,7 +60,7 @@ export const DeleteTodo = (text, completed) => {
 
 
 export const PostRegister = (name, user, email, psw) => {
-    const url = "https://honganh.azurewebsites.net/api/uetcodecamp/";
+    const url = "https://honganh.azurewebsites.net/api/codecamp/register";
     const request = new Request(url, {
         method: 'Post',
         headers: {
@@ -80,7 +79,7 @@ export const PostRegister = (name, user, email, psw) => {
 }
 
 export const PostLogin = (user, psw) => {
-    const url = "https://honganh.azurewebsites.net/api/uetcodecamp/";
+    const url = "https://honganh.azurewebsites.net/api/codecamp/login";
     const request = new Request(url, {
         method: 'Post',
         headers: {

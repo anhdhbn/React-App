@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NavBar from "./NavBar";
 import {Redirect} from "react-router-dom";
 import {PostRegister} from "./Services/APIServices";
+import Cookies from 'js-cookie';
 
 class Register extends Component {
     state = {
@@ -10,10 +11,15 @@ class Register extends Component {
         email: "",
         psw: "",
         psw2: "",
-        success: false
+        success: false,
+        error: ""
     }
     render() {
         const {success} = this.state;
+        const {error} = this.state;
+        if(Cookies.get('user')){
+            return <Redirect to="/" />
+        }
         if (success) {
             return <Redirect to="/login" />
         }
@@ -21,7 +27,7 @@ class Register extends Component {
             <div className="container conReg">
                 <NavBar Register={true} />
                 <h1>Sign Up</h1>
-                <p>Please fill in this form to create an account.</p>
+                <p style={{ color: (error? 'red' : 'black')}}>{error? error : "Please fill in this form to create an account."}</p>
                 <hr />
 
                 <label htmlFor="name"><b>Full Name</b></label>
@@ -79,13 +85,20 @@ class Register extends Component {
     }
 
     SubmitAccount = () => {
-        console.log("submit");
         if(this.state.psw === this.state.psw2)
         {
             PostRegister(this.state.name, this.state.user, this.state.email, this.state.psw).then(object => {
                 const {success} = object;
-                this.setState({success: success});
+                if(success){
+                    this.setState({success: success});
+                }
+                else{
+                    this.setState({error: "Đăng kí thất bại, kiểm tra lại server"});
+                }               
             });
+        }
+        else{
+            this.setState({error: "Vui lòng nhập 2 pass giống nhau"});
         }
     }
 }
