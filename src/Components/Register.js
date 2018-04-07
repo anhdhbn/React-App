@@ -89,11 +89,12 @@ class Register extends Component {
         {
             PostRegister(this.state.name, this.state.user, this.state.email, this.state.psw).then(object => {
                 const {success} = object;
+                const {error} = object;
                 if(success){
                     this.setState({success: success});
                 }
                 else{
-                    this.setState({error: "Đăng kí thất bại, kiểm tra lại server"});
+                    this.setState({error: error});
                 }               
             });
         }

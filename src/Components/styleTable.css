@@ -1,0 +1,38 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+
+.conAcc button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    opacity: 0.9;
+}
+
+.conAcc button:hover {
+    opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.conAcc .cancelbtn {
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+
+.conAcc .changebtn {
+    padding: 14px 20px;
+    background-color: yellow;
+    color: black;
+}

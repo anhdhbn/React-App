@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import "./styleLogin.css";
 import NavBar from "./NavBar";
 import { PostLogin } from "./Services/APIServices";
+import {GetToken} from "./Services/APIServices";
 import Cookies from 'js-cookie';
 
 class Login extends Component {
@@ -62,7 +63,12 @@ class Login extends Component {
             const { success } = object;
             if (success) {
                 Cookies.set('user', this.state.user,  { expires: 7, path: '/' });
-                this.setState({ success: success });
+                GetToken(this.state.user, this.state.psw).then(object => {
+                    const {access_token} = object;
+                    localStorage.setItem("access_token", access_token);
+                    this.setState({ success: success });
+                });
+                
             }
             else {
                 const { error } = object;

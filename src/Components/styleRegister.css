@@ -58,6 +58,10 @@ body {
     background-color: #f44336;
 }
 
+.conReg .changebtn {
+    padding: 14px 20px;
+    background-color: yellow;
+}
 /* Float cancel and signup buttons and add an equal width */
 .conReg .cancelbtn,.conReg  .signupbtn {
   float: left;

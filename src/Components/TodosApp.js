@@ -6,6 +6,7 @@ import { ChangeCompleted } from "./Services/APIServices";
 import { DeleteTodo } from "./Services/APIServices";
 import NavBar from "./NavBar";
 import Cookies from 'js-cookie';
+import { Redirect } from "react-router-dom";
 
 class Todo extends Component {
 
@@ -126,12 +127,13 @@ class Container extends Component {
         }
         else {
             return (
-                <div id="container" className="container">
-                    <NavBar Home={true} />
-                    <br/><br/>
-                    <p style={{ color: 'red' }}>{"Vui lòng đăng nhập trước khi sử dụng"}</p>
-                    <hr />
-                </div>
+                // <div id="container" className="container">
+                //     <NavBar Home={true} />
+                //     <br/><br/>
+                //     <p style={{ color: 'red' }}>{"Vui lòng đăng nhập trước khi sử dụng"}</p>
+                //     <hr />
+                // </div>
+                 <Redirect to="/login" />
             );
         }
 
@@ -175,31 +177,8 @@ class Container extends Component {
         this.setState({ text: text });
     }
 
-    getTodosFromStorage = () => {
-        let str = localStorage.getItem("todos");
-        if (!str) {
-            return [];
-        }
-        try {
-            return JSON.parse(str);
-        }
-        catch (error) {
-            return [];
-        }
-    }
-    saveTodosToStorage = (todos) => {
-        const str = JSON.stringify(todos);
-        localStorage.setItem('todos', str);
-    }
 
-    addTodosToStorage = (text) => {
-        let tempTodos = this.state.todos;
-        let tempItem = {
-            text: text,
-            completed: false
-        };
-        tempTodos.push(tempItem);
-    }
+
 }
 
 class TodosApp extends Component {
