@@ -7,7 +7,7 @@ class NavBar extends Component {
             return(
                 <div className="topnav">
                     <Link to="/" className={this.props.Home ? "active" : ""}>Home</Link>
-                    <Link to="/account" className={this.props.Login ? "active" : ""}>Account</Link>
+                    <Link to="/account" className={this.props.Account ? "active" : ""}>Account</Link>
                 </div>
             );
         }

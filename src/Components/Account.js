@@ -27,7 +27,7 @@ class Account extends Component {
 
         return (
             <div id="nav" className="container conAcc">
-                <NavBar logined={true} />
+                <NavBar logined={true} Account={true}/>
                 <table>
                     <tbody>
                         <tr>
